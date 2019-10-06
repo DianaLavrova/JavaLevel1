@@ -18,10 +18,14 @@ public class Map extends JPanel {
     int cellHeight;
 
     boolean isInitialised = false;
+    public JLabel infoLabel = new JLabel();
 
-    public Map() {
+    public Map(String infoLabelText) {
+
         setBackground(Color.ORANGE);
-
+        infoLabel.setText(infoLabelText);
+        infoLabel.setVisible(true);
+        add(infoLabel, BorderLayout.CENTER);
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseReleased(MouseEvent e) {
@@ -87,6 +91,9 @@ public class Map extends JPanel {
 
     void update(MouseEvent e) {
 //        System.out.println(e.getX() + " " + e.getY());
+        if(!isInitialised) {
+            return;
+        }
         int cellX = e.getX() / cellWidth;
         int cellY = e.getY() / cellHeight;
         System.out.println(cellX + " " + cellY);
