@@ -20,22 +20,22 @@ public class Logic {
         gameFinished = true;
         printMap();
         if (checkWin(DOT_X)) {
-            System.out.println("Вы победили! Поздравляем!");
+            new GameWindow(Constants.PLAYER1_WIN_INFO);
             return;
         }
         if (isFull()) {
-            System.out.println("Ничья!");
+            new GameWindow(Constants.DRAW_INFO);
             return;
         }
 
         aiTurn();
         printMap();
         if (checkWin(DOT_O)) {
-            System.out.println("Компьютер победил! ");
+            new GameWindow(Constants.PLAYER2_WIN_INFO);
             return;
         }
         if (isFull()) {
-            System.out.println("Ничья!");
+            new GameWindow(Constants.DRAW_INFO);
             return;
         }
         gameFinished = false;

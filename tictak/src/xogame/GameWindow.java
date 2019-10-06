@@ -13,11 +13,16 @@ public class GameWindow extends JFrame {
     private static Map field;
 
     public GameWindow() {
+        this(Constants.NEW_GAME_INFO);
+
+    }
+    public GameWindow(String text) {
         setBounds(WIN_POS_X, WIN_POS_Y, WIN_WIDTH, WIN_HEIGHT);
-        setTitle("MyWindow");
+        setTitle("New game window");
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         JPanel jPanel = new JPanel(new GridLayout(1, 2));
+
         JButton btnNewGame = new JButton("Start new Game");
         JButton btnExit = new JButton("Exit");
         jPanel.add(btnNewGame);
@@ -34,12 +39,12 @@ public class GameWindow extends JFrame {
             System.exit(0);
         });
 
-        field = new Map();
+        field = new Map(text);
         add(field, BorderLayout.CENTER);
         setVisible(true);
     }
-
     void startNewGame(int mode, int fieldSizeX, int fieldSizeY, int winLength) {
         field.startNewGame(mode, fieldSizeX, fieldSizeY, winLength);
+        field.infoLabel.setVisible(false);
     }
 }
